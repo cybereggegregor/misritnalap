@@ -1,4 +1,4 @@
-export async function fetchRedditComments(username, onProgress, limit = 500) {
+export async function fetchRedditComments(username, onProgress, limit = 500, accessToken = null) {
   try {
     // Call the Netlify function
     const response = await fetch('/.netlify/functions/reddit-fetch', {
@@ -6,7 +6,7 @@ export async function fetchRedditComments(username, onProgress, limit = 500) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, limit })
+      body: JSON.stringify({ username, limit, accessToken })
     })
 
     if (!response.ok) {

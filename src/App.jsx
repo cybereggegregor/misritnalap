@@ -8,17 +8,27 @@ import AnalysisSection from './components/AnalysisSection'
 import AnalysisResults from './components/AnalysisResults'
 import { useTheme } from './hooks/useTheme'
 import { useLocalStorage } from './hooks/useLocalStorage'
+import RedditAuthModal from './components/RedditAuthModal';
 
 function App() {
-  const { theme, toggleTheme } = useTheme()
-  const [savedUsers, setSavedUsers] = useLocalStorage('savedUsers', [])
-  const [savedAnalyses, setSavedAnalyses] = useLocalStorage('savedAnalyses', {}) // New state for saved analyses
-  const [currentUser, setCurrentUser] = useState(null)
-  const [fetchStatus, setFetchStatus] = useState({ status: 'idle', progress: 0, error: null })
-  const [analysisStatus, setAnalysisStatus] = useState({ status: 'idle', result: null, error: null })
-  const [analytics, setAnalytics] = useState(null)
-  const [downloadUrl, setDownloadUrl] = useState(null)
-  const [commentsData, setCommentsData] = useState(null)
+  const { theme, toggleTheme } = useTheme();
+  const [savedUsers, setSavedUsers] = useLocalStorage('savedUsers', []);
+  const [savedAnalyses, setSavedAnalyses] = useLocalStorage('savedAnalyses', {}); // New state for saved analyses
+  const [currentUser, setCurrentUser] = useState(null);
+  const [fetchStatus, setFetchStatus] = useState({ status: 'idle', progress: 0, error: null });
+  const [analysisStatus, setAnalysisStatus] = useState({ status: 'idle', result: null, error: null });
+  const [analytics, setAnalytics] = useState(null);
+  const [downloadUrl, setDownloadUrl] = useState(null);
+  const [commentsData, setCommentsData] = useState(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [accessToken, setAccessToken] = useLocalStorage('redditAccessToken', null);
+
+  useEffect(() => {
+    if (!accessToken) {
+      // Redirect to login page or show a message
+      setIsAuthModalOpen(true);
+    }
+  }, [accessToken]);
 
   const handleUserFetched = (userData, fetchedUsername) => {
     if (!fetchedUsername) {
@@ -89,6 +99,13 @@ function App() {
     <div className="min-h-screen transition-colors duration-300 font-sans">
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <main className="container mx-auto p-4">
+        <button onClick={() => setIsAuthModalOpen(true)}>
+          Authorize with Reddit
+        </button>
+        <RedditAuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+        />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 flex flex-col gap-8">
             <FetchSection

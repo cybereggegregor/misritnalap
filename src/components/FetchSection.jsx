@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { extractUsername } from '../utils/reddit'
-import { fetchRedditComments } from '../services/reddit'
-import { Button } from "@/components/ui/button"
+import { fetchRedditComments } from '../services/reddit';
+import { Button } from "@/components/ui/button";
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 function FetchSection({ onUserFetched, status, onStatusChange }) {
-  const [username, setUsername] = useState('')
-  const [commentLimit, setCommentLimit] = useState(500) // Default limit
+  const [username, setUsername] = useState('');
+  const [commentLimit, setCommentLimit] = useState(500); // Default limit
+  const [accessToken] = useLocalStorage('redditAccessToken', null);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -26,11 +28,11 @@ function FetchSection({ onUserFetched, status, onStatusChange }) {
 
     try {
       const userData = await fetchRedditComments(cleanUsername, (progress) => {
-        onStatusChange({ status: 'fetching', progress, error: null })
-      }, commentLimit) // Pass the commentLimit
-      
-      onStatusChange({ status: 'complete', progress: 100, error: null })
-      onUserFetched(userData, cleanUsername)
+        onStatusChange({ status: 'fetching', progress, error: null });
+      }, commentLimit, accessToken); // Pass the commentLimit and accessToken
+
+      onStatusChange({ status: 'complete', progress: 100, error: null });
+      onUserFetched(userData, cleanUsername);
     } catch (error) {
       onStatusChange({ status: 'error', progress: 0, error: error.message })
     }

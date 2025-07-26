@@ -33,7 +33,7 @@ async function getRedditAccessToken(clientId, clientSecret, userAgent) {
   }
 }
 exports.handler = async function (event, context) {
-  const { username, limit } = JSON.parse(event.body);
+  const { limit, accessToken } = JSON.parse(event.body);
   const clientId = process.env.REDDIT_CLIENT_ID;
   const clientSecret = process.env.REDDIT_CLIENT_SECRET;
   const userAgent = process.env.REDDIT_USER_AGENT;
@@ -49,11 +49,9 @@ exports.handler = async function (event, context) {
   const fetchLimit = limit && typeof limit === 'number' && limit > 0 ? limit : 100;
 
   try {
-    // Get Reddit access token
-    const accessToken = await getRedditAccessToken(clientId, clientSecret, userAgent);
-
-    console.log(`Fetching comments for user: ${username} with limit: ${fetchLimit}`);
-    const redditApiUrl = `https://oauth.reddit.com/user/${username}/comments.json?limit=${fetchLimit}`;
+    // Use the provided access token
+    console.log(`Fetching comments with access token: ${accessToken} with limit: ${fetchLimit}`);
+    const redditApiUrl = `https://oauth.reddit.com/me/comments.json?limit=${fetchLimit}`;
 
     const response = await fetch(redditApiUrl, {
       headers: {
@@ -79,7 +77,7 @@ exports.handler = async function (event, context) {
       }),
     };
   } catch (error) {
-    console.error("Error fetching Mis Ritnalap posts:", error);
+    console.error("Error fetching comments:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
