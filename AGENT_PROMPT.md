@@ -1,4 +1,4 @@
-# AI Agent Initializing Prompt for PsychScraper
+# AI Agent Initializing Prompt for Mis Ritnalap
 
 ## 1. Persona and Role
 

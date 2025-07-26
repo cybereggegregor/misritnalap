@@ -1,6 +1,6 @@
 # Addendum: Detailed Architectural Analysis of PsychScraper
 
-This document provides a comprehensive summary of the 'PsychScraper' application's architecture, based on an analysis of its frontend components, backend serverless functions, and the client-side modules that connect them.
+This document provides a comprehensive summary of the 'Mis Ritnalap' application's architecture, based on an analysis of its frontend components, backend serverless functions, and the client-side modules that connect them.
 
 ### **Overall Architecture**
 

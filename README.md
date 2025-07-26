@@ -1,4 +1,4 @@
-# Reddit Comment Analyzer Pro
+# Mis Ritnalap Pro
 
 A modern web application that fetches and analyzes Reddit user comments using AI-powered insights from Google's Gemini models.
 
@@ -21,7 +21,7 @@ Create a `.env` file in your project root with the following variables:
 # Reddit API Configuration
 REDDIT_CLIENT_ID=your_reddit_client_id_here
 REDDIT_CLIENT_SECRET=your_reddit_client_secret_here
-REDDIT_USER_AGENT=RedditAnalyzer/1.0
+REDDIT_USER_AGENT=MisRitnalap/1.0
 
 # Gemini AI Configuration
 GEMINI_API_KEY=your_gemini_api_key_here

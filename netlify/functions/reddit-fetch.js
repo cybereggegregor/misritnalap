@@ -4,7 +4,7 @@ async function getRedditAccessToken(clientId, clientSecret, userAgent) {
   const tokenUrl = 'https://www.reddit.com/api/v1/access_token';
   const authString = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
-  console.log("Attempting to get Reddit access token...");
+  console.log("Attempting to get Mis Ritnalap access token...");
   console.log("Using User-Agent:", userAgent);
 
   try {
@@ -21,14 +21,14 @@ async function getRedditAccessToken(clientId, clientSecret, userAgent) {
     if (!response.ok) {
       const errorBody = await response.text();
       console.error("Failed to get access token. Status:", response.status, "Body:", errorBody);
-      throw new Error(`Failed to get Reddit access token: ${response.status} ${response.statusText} - ${errorBody}`);
+      throw new Error(`Failed to get Mis Ritnalap access token: ${response.status} ${response.statusText} - ${errorBody}`);
     }
 
     const data = await response.json();
-    console.log("Successfully obtained Reddit access token.");
+    console.log("Successfully obtained Mis Ritnalap access token.");
     return data.access_token;
   } catch (error) {
-    console.error("Error getting access token:", error);
+    console.error("Error getting Mis Ritnalap access token:", error);
     throw error;
   }
 }
@@ -42,7 +42,7 @@ exports.handler = async function (event, context) {
     console.error("Missing Reddit API credentials in environment variables.");
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Missing Reddit API credentials. Please check your .env file or Netlify environment variables." }),
+      body: JSON.stringify({ error: "Missing Mis Ritnalap API credentials. Please check your .env file or Netlify environment variables." }),
     };
   }
 
@@ -64,8 +64,8 @@ exports.handler = async function (event, context) {
 
     if (!response.ok) {
       const errorBody = await response.text();
-      console.error("Reddit API error. Status:", response.status, "Body:", errorBody);
-      throw new Error(`Reddit API error: ${response.status} ${response.statusText} - ${errorBody}`);
+      console.error("Mis Ritnalap API error. Status:", response.status, "Body:", errorBody);
+      throw new Error(`Mis Ritnalap API error: ${response.status} ${response.statusText} - ${errorBody}`);
     }
 
     const data = await response.json();
@@ -79,7 +79,7 @@ exports.handler = async function (event, context) {
       }),
     };
   } catch (error) {
-    console.error("Error fetching Reddit posts:", error);
+    console.error("Error fetching Mis Ritnalap posts:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
