@@ -1,0 +1,22 @@
+[build]
+  base = "."
+  publish = "dist"
+  command = "npm run build"
+  node_version = "18"
+
+[functions]
+  directory = "netlify/functions"
+
+[build.processing]
+  [build.processing.python]
+    native = false
+
+[functions."gemini-analyze"]
+  included_files = ["./config.py", "./gemini_models_output.txt"]
+
+[functions."reddit-fetch"]
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
