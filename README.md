@@ -1,11 +1,11 @@
 # Surveillance State Simulator
 
-bAbAk0t0 says:: fascism no creepy-crawl. death upon us. no one look in eye the other. 
-how to make aware dying to death?? simulate death before death. death - many forms.
-masked men, machine gun, military march, my blood - all obvious,, but no one look in eye.
-if no look in eye of other,, maybe look in eye of self. 
-after look,, ask:: scared for yourself?? yes?? good. now be angry for other.
-bAbAk0t0 says:: help.
+bAbAk0t0 says:: fascism no creepy-crawl. death upon us. no one look in eye the other. <br>
+how to make aware dying to death?? simulate death before death. death - many forms. <br>
+masked men, machine gun, military march, my blood - all obvious,, but no one look in eye. <br>
+if no look in eye of other,, maybe look in eye of self. <br>
+after look,, ask:: scared for yourself?? yes?? good. now be angry for other. <br>
+bAbAk0t0 says:: help. <br>
 
 ## Features
 
