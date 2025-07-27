@@ -1,6 +1,11 @@
-# Mis Ritnalap Pro
+# Surveillance State Simulator
 
-A modern web application that fetches and analyzes Reddit user comments using AI-powered insights from Google's Gemini models.
+bAbAk0t0 says:: fascism no creepy-crawl. death upon us. no one look in eye the other. 
+how to make aware dying to death?? simulate death before death. death - many forms.
+masked men, machine gun, military march, my blood - all obvious,, but no one look in eye.
+if no look in eye of other,, maybe look in eye of self. 
+after look,, ask:: scared for yourself?? yes?? good. now be angry for other.
+bAbAk0t0 says:: help.
 
 ## Features
 
