@@ -6,10 +6,11 @@ function Header({ theme, onToggleTheme }) {
     <header className="bg-card text-card-foreground py-4 px-6 flex justify-between items-center border-b">
       <div className="flex items-center gap-4">
         <h1 className="text-xl font-bold font-space-grotesk">
-          Reddit Comment Analyzer
+          bAbAk0t0 presents: 
+          Surveillance State Simulator
         </h1>
         <span className="px-2 py-0.5 text-xs font-semibold rounded-full gemini-gradient text-white">
-          Powered by Gemini
+          Powered by Evil & Gemini 1.5
         </span>
       </div>
       <button
